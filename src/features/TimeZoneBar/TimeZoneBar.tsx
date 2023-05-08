@@ -29,7 +29,7 @@ function TimeZoneBar({ onSubmit }: ITimeZoneBarProps) {
   const onSubmitHandler = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (timeName && timeValue) {
-      onSubmit({ timeName, timeValue, id: generateId() });
+      onSubmit({ timeName, timeValue: Number(timeValue), id: generateId() });
       setName('');
       setTimeValue('');
     }

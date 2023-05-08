@@ -5,6 +5,7 @@ import { useState } from 'react';
 
 function TimeZoneSelector() {
   const [clocks, setClocks] = useState<IClock[]>([]);
+
   const onSubmit = (clock: IClock) => {
     setClocks([...clocks, clock]);
   };
