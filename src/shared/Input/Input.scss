@@ -1,0 +1,13 @@
+.app-input-wrapper {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    margin-bottom: 4px;
+  }
+}
+
+
+.app-input {
+  padding: 4px;
+}
