@@ -1,20 +1,24 @@
 import TimeZoneBar from '@/features/TimeZoneBar';
 import TimeZoneList from '@/features/TimeZoneList';
+import { UUID } from '@/shared/domains/uuid';
+import { useState } from 'react';
 
-export interface ITimeZoneSelectorProps {
+export interface IClock {
   timeName: string;
   timeValue: number | string;
+  id: UUID;
 }
 
 function TimeZoneSelector() {
-  const onSubmit = ({ timeName, timeValue }: ITimeZoneSelectorProps) => {
-    console.log('submit', timeName, timeValue);
+  const [clocks, setClocks] = useState<IClock[]>([]);
+  const onSubmit = (clock: IClock) => {
+    setClocks([...clocks, clock]);
   };
 
   return (
     <>
       <TimeZoneBar onSubmit={onSubmit} />
-      <TimeZoneList />
+      <TimeZoneList clocks={clocks}/>
     </>
   );
 }

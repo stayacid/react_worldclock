@@ -1,4 +1,4 @@
-import { Input, InputType } from '@/shared/Input';
+import { Input, InputType } from '@/shared/ui/Input';
 import { useEffect } from 'react';
 
 interface ITimeZoneNameProps {

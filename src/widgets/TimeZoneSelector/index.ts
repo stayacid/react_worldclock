@@ -1,4 +1,4 @@
-import TimeZoneSelector, { ITimeZoneSelectorProps } from "./TimeZoneSelector.tsx";
+import TimeZoneSelector, { IClock } from "./TimeZoneSelector.tsx";
 
-export { TimeZoneSelector };
-export type { ITimeZoneSelectorProps };
+export default TimeZoneSelector;
+export type { IClock };
