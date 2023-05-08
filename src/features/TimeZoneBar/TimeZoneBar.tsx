@@ -4,7 +4,8 @@ import './TimeZoneBar.scss';
 import TimeZoneValue from '@/entities/TimeZoneValue';
 import TimeZoneName from '@/entities/TimeZoneName';
 import Button from '@/shared/ui/Button';
-import { IClock } from '@/widgets/TimeZoneSelector';
+import { IClock } from '@/shared/domains/clock';
+import { generateId } from '@/shared/domains/uuid';
 
 interface ITimeZoneBarProps {
   onSubmit: (clock: IClock) => void;
@@ -28,8 +29,7 @@ function TimeZoneBar({ onSubmit }: ITimeZoneBarProps) {
   const onSubmitHandler = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (timeName && timeValue) {
-      const id = self.crypto.randomUUID();
-      onSubmit({ timeName, timeValue, id });
+      onSubmit({ timeName, timeValue, id: generateId() });
       setName('');
       setTimeValue('');
     }
