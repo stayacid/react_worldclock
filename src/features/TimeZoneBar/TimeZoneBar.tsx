@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { useState } from 'react';
 import './TimeZoneBar.scss';
 
 import TimeZoneValue from '@/entities/TimeZoneValue';
@@ -11,34 +11,34 @@ interface ITimeZoneBarProps {
   onSubmit: (clock: IClock) => void;
 }
 
-const MemotizedTimeZoneName = memo(TimeZoneName);
-const MemotizedTimeZoneValue = memo(TimeZoneValue);
 
 function TimeZoneBar({ onSubmit }: ITimeZoneBarProps) {
   const [timeName, setName] = useState('');
-  const [timeValue, setTimeValue] = useState<number | string>('');
+  const [timeValue, setTimeValue] = useState<number>(0);
 
   const setNameHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
   };
 
   const setTimeValueHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTimeValue(parseInt(e.target.value, 10) || '');
+    setTimeValue(parseInt(e.target.value, 10));
   };
 
   const onSubmitHandler = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    if (timeName && timeValue) {
+    
+    console.log(timeName); // выводит пустую строку
+    if (timeName) {
       onSubmit({ timeName, timeValue: Number(timeValue), id: generateId() });
       setName('');
-      setTimeValue('');
+      setTimeValue(0);
     }
   };
 
   return (
     <form className="app_timezone-bar">
-      <MemotizedTimeZoneName value={timeName} onVary={setNameHandler} />
-      <MemotizedTimeZoneValue value={timeValue} onVary={setTimeValueHandler} />
+      <TimeZoneName value={timeName} onVary={setNameHandler} />
+      <TimeZoneValue value={timeValue} onVary={setTimeValueHandler} />
       <Button text="Добавить" type="submit" onPress={onSubmitHandler} />
     </form>
   );

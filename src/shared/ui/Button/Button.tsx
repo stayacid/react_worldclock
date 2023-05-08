@@ -16,7 +16,7 @@ function Button({ text, type, onPress }: IButtonProps) {
     return () => {
       console.log('Button unmounted');
     };
-  }, []);
+  });
 
   return (
     <button className="app_button" type={type} onClick={onPress}>

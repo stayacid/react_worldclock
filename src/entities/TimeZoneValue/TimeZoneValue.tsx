@@ -1,19 +1,13 @@
 import { Input, InputType } from '@/shared/ui/Input';
-import { useEffect } from 'react';
+import { memo } from 'react';
 
 interface ITimeZoneValue {
   value: number | string;
   onVary: (value: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-function TimeZoneValue({ value, onVary }: ITimeZoneValue) {
-  // TODO: удалить после тестирования
-  useEffect(() => {
-    console.log('TimeZoneValue mounted');
-    return () => {
-      console.log('TimeZoneValue unmounted');
-    };
-  }, []);
+function TimeZoneValueBased({ value, onVary }: ITimeZoneValue) {
+  // скрывать ноль при загрузке компонента - код ниже не работает
 
   return (
     <Input
@@ -25,5 +19,11 @@ function TimeZoneValue({ value, onVary }: ITimeZoneValue) {
     />
   );
 }
+
+function areEqual(prevProps: ITimeZoneValue, nextProps: ITimeZoneValue) {
+  return prevProps.value === nextProps.value;
+}
+
+const TimeZoneValue = memo(TimeZoneValueBased, areEqual); // stop rerendering if value is the same
 
 export default TimeZoneValue;

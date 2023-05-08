@@ -1,20 +1,12 @@
 import { Input, InputType } from '@/shared/ui/Input';
-import { useEffect } from 'react';
+import { memo } from 'react';
 
 interface ITimeZoneNameProps {
   value: string;
   onVary: (value: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-function TimeZoneName({ value, onVary }: ITimeZoneNameProps) {
-  // TODO: удалить после тестирования
-  useEffect(() => {
-    console.log('TimeZoneName mounted');
-    return () => {
-      console.log('TimeZoneName unmounted');
-    };
-  }, []);
-
+function TimeZoneNameBased({ value, onVary }: ITimeZoneNameProps) {
   return (
     <Input
       id="time_zone_name"
@@ -26,4 +18,10 @@ function TimeZoneName({ value, onVary }: ITimeZoneNameProps) {
   );
 }
 
-export default TimeZoneName;
+function areEqual(prevProps: ITimeZoneNameProps, nextProps: ITimeZoneNameProps) {
+  return prevProps.value === nextProps.value;
+}
+
+const TimeZoneValue = memo(TimeZoneNameBased, areEqual); // stop rerendering if value is the same
+
+export default TimeZoneValue;
