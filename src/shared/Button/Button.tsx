@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import './Button.scss';
 
-type IButtonType = "button" | "submit" | "reset" | undefined;
+type IButtonType = 'button' | 'submit' | 'reset' | undefined;
 
 interface IButtonProps {
   text: string;
@@ -12,13 +12,17 @@ interface IButtonProps {
 function Button({ text, type, onPress }: IButtonProps) {
   // TODO: удалить после тестирования
   useEffect(() => {
-    console.log("Button mounted");
+    console.log('Button mounted');
     return () => {
-      console.log("Button unmounted");
-    }
+      console.log('Button unmounted');
+    };
   }, []);
 
-  return ( <button className="app_button" type={type} onClick={onPress}>{ text }</button> );
+  return (
+    <button className="app_button" type={type} onClick={onPress}>
+      {text}
+    </button>
+  );
 }
 
 export default Button;

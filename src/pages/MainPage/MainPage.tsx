@@ -1,4 +1,4 @@
-import TimeZoneSelector from "../../widgets/TimeZoneSelector";
+import TimeZoneSelector from "@/widgets/TimeZoneSelector";
 
 function MainPage() {
   return (

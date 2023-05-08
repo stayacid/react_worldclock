@@ -1,5 +1,5 @@
-import TimeZoneBar from "../../features/TimeZoneBar";
-import TimeZoneList from "../../features/TimeZoneList";
+import TimeZoneBar from '@/features/TimeZoneBar';
+import TimeZoneList from '@/features/TimeZoneList';
 
 export interface ITimeZoneSelectorProps {
   timeName: string;
@@ -7,14 +7,16 @@ export interface ITimeZoneSelectorProps {
 }
 
 function TimeZoneSelector() {
-  const onSubmit = ({ timeName, timeValue}: ITimeZoneSelectorProps) => { 
-    console.log("submit", timeName, timeValue);
+  const onSubmit = ({ timeName, timeValue }: ITimeZoneSelectorProps) => {
+    console.log('submit', timeName, timeValue);
   };
 
-  return ( <>
-  <TimeZoneBar onSubmit={onSubmit}/>
-  <TimeZoneList />
-  </> );
+  return (
+    <>
+      <TimeZoneBar onSubmit={onSubmit} />
+      <TimeZoneList />
+    </>
+  );
 }
 
 export default TimeZoneSelector;

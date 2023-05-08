@@ -15,9 +15,15 @@ interface IInputProps {
 
 function Input({ type, id, label, value, onVary }: IInputProps) {
   return (
-    <div className='app-input-wrapper'>
+    <div className="app-input-wrapper">
       {label && <label htmlFor={id}>{label}</label>}
-      <input id={id} className="app-input" type={type} value={value} onChange={onVary} />
+      <input
+        id={id}
+        className="app-input"
+        type={type}
+        value={value}
+        onChange={onVary}
+      />
     </div>
   );
 }
