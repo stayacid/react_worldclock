@@ -1,16 +1,129 @@
 .app_clock {
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
 }
 
 .app_clock_header {
   display: flex;
+  align-items: center;
 
   h3 {
     margin: 0;
   }
 
   button {
-    margin-left: 10px;
+    margin-left: auto;
+    width: 20px;
+    height: 20px;
+    font-size: 0;
+    padding: 0;
+    border-radius: 50%;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      font-size: 18px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+      width: 1px;
+      height: 10px;
+      background-color: #fff;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      font-size: 18px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-45deg);
+      width: 1px;
+      height: 10px;
+      background-color: #fff;
+    }
   }
+}
+
+.app_clock_body {
+  position: relative;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  width: 100px;
+  height: 100px;
+  margin-top: 10px;
+}
+
+.app_clock_hours_marks {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  li {
+    width: 1px;
+    background-color: #fff;
+    height: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: top;
+
+    &:nth-child(1) {
+      top: 0;
+    }
+
+    &:nth-child(2) {
+      left: 100%;
+      transform: rotate(90deg);
+    }
+
+    &:nth-child(3) {
+      top: calc(100% - 10px);
+    }
+
+    &:nth-child(4) {
+      left: 10px;
+      transform: rotate(90deg);
+    }
+  }
+}
+
+.app_clock_hours_arrow {
+  width: 2px;
+  background-color: red;
+  height: 40px;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform-origin: bottom;
+}
+
+.app_clock_hours_minutes {
+  width: 2px;
+  background-color: #fff;
+  height: 50px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform-origin: bottom;
+}
+
+.app_clock_hours_seconds {
+  width: 1px;
+  background-color: #fff;
+  height: 50px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform-origin: bottom;
+}
+
+.app_clock_digits {
+  margin: 10px 0 0 0;
 }

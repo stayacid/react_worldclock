@@ -10,10 +10,16 @@ function TimeZoneSelector() {
     setClocks([...clocks, clock]);
   };
 
+  const deleteClock = (id: string) => {
+    setClocks(clocks.filter((clock) => clock.id !== id));
+  };
+
   return (
     <>
       <TimeZoneBar onSubmit={onSubmit} />
-      <TimeZoneList clocks={clocks}/>
+      {clocks.length > 0 && (
+        <TimeZoneList clocks={clocks} deleteClock={deleteClock} />
+      )}
     </>
   );
 }
